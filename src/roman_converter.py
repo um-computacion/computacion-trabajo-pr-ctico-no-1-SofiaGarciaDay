@@ -1,19 +1,6 @@
-def decimal_to_roman(decimal):
-    """
-    Convierte un número decimal a número romano.
-    
-    Args:
-        decimal: Número entero entre 1 y 3999
-    
-    Returns:
-        str: Representación en números romanos
-    """
-    if not isinstance(decimal, int):
-        raise TypeError("El número debe ser un entero")
-    if not 1 <= decimal <= 3999:
-        raise ValueError("El número debe estar entre 1 y 3999")
+def decimal_a_romano(numero):
 
-    conversion_table = [
+    valores_romanos = [
         (1000, "M"),
         (900, "CM"),
         (500, "D"),
@@ -29,10 +16,18 @@ def decimal_to_roman(decimal):
         (1, "I")
     ]
     
-    roman = ""
-    for value, symbol in conversion_table:
-        while decimal >= value:
-            roman += symbol
-            decimal -= value
+    romano = ""
     
-    return roman
+    for valor, simbolo in valores_romanos:
+        while numero >= valor:
+            romano += simbolo
+            numero -= valor
+            
+    return romano
+
+numero = int(input("Ingresa un número decimal entre 1 y 3999: "))
+
+if 1 <= numero <= 3999:
+    print(f"El número {numero} en romano es: {decimal_a_romano(numero)}")
+else:
+    print("El número ingresado no está en el rango válido (1-3999).")
